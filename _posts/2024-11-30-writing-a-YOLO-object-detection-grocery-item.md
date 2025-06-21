@@ -23,3 +23,8 @@ An experiment to train a model to detect Filipino grocery items using YOLO.
 
 Training runs and weights can be found in this [Google Drive](https://drive.google.com/drive/folders/1_awr49-evoKf2umHpMZX-DZkjJaTCUfU?usp=sharing) (Request for access from owner). 
 
+# Sample inference
+
+![YOLO-Examples](/assets/yolo-assets-examples.png)
+
+For a sample video, you may look at this [Google Drive link](https://drive.google.com/file/d/11ZkKFuzX7ROK4D8aibv1qCen53INYlT0/view?usp=sharing).
