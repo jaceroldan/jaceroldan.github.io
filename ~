@@ -1,0 +1,15 @@
+Add link to sample video inference on YOLO post
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# Date:      Sat Jun 21 13:58:47 2025 +0800
+#
+# On branch main
+# Your branch is up to date with 'origin/main'.
+#
+# Changes to be committed:
+#	modified:   _posts/2024-11-30-writing-a-YOLO-object-detection-grocery-item.md
+#	deleted:    assets/output_with_yolo.mp4
+#	new file:   assets/yolo-assets-examples.png
+#
