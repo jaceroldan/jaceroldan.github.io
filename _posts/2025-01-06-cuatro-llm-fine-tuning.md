@@ -5,6 +5,9 @@ categories: ["Deep Learning"]
 tags: [Transfer Learning, Machine Translation]
 ---
 
+![Cuatro_LLM_HuggingFace.png](/assets/Cuatro_LLM_HuggingFace.png)
+
+
 # Summary
 
 This mini-project focused on CuatroLLM, a 1.3B parameter model pre-trained on four languages: English, French, Spanish, and German. We replicated its baseline results on complex reasoning tasks. Fine-tuning CuatroLLM with a scientific corpus marginally worsens performance in complex reasoning. However, in zero-shot and one-shot scenarios, we demonstrate improvements in fine-tuned CuatroLLM’s English-French translation for the scientific domain. Lastly, we explored CuatroLLM for English-Filipino translation with a small compiled dataset. Including Filipino as part of pre-training could improve this performance, but it would require a larger translation dataset.
