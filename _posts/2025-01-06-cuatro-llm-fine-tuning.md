@@ -1,6 +1,8 @@
 ---
 layout: post
 title:  "CuatroLLM niche translations with adaptive in-context learning: exploring English-Filipino"
+categories: ["Deep Learning"]
+tags: [Transfer Learning, Machine Translation]
 ---
 
 # Summary
