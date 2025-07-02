@@ -60,7 +60,7 @@ There was no known dataset yet on Filipino grocery products so our class had to 
 | Soy Sauce                | Silver Swan Soy Sauce (385 ml)                       |
 | Toothpaste               | Colgate Advanced White Value Pack (2 tubes)          |
 
-![Number-of-Instances-vs-Classes](/assets/yolo-classes-instances.png)
+![Number-of-Instances-vs-Classes](/assets/yolo-classes-instances-1.png)
 
 
 I had to be very familiar with the VGG Image Annotator (VIA) software. It was a little clunky at first, and it was difficult to set the annotation formats at first. One of our team members deployed a VIA server and had the whole flow centralized. If you're interested in seeing the images, making a public benchmark dataset is still being talked about.
@@ -103,6 +103,9 @@ The best YOLO configuration did pretty well on the dataset, but really struggled
 
 ## Part 2
 
+After our first foray, the class was given 2 more weeks to improve the dataset. We added more images, brought up the total number of images per object class to about 500 per grocery item, and double checked our initializations (e.g. ensured the images were of the same sizes, the annotation boxes were correct and in the proper formats, etc.).
+
+![Number-of-Instances-vs-Classes](/assets/yolo-classes-instances-2.png)
 
 ## Results
 
