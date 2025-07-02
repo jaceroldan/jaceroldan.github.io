@@ -11,7 +11,7 @@ An experiment to train a model to detect Filipino grocery items using YOLO. YOLO
 
 # Prompt
 
-The idea was simple — create a product detection or segmentation model using the most common Filipino grocery items, with as many of them as possible. We did this as a class for the UPD MEngAI AI 231 course, Machine Learning Operations. Obviously, the first step was building a database of images, and doing manual annotation. It wasn't the easiest experience, but it definitely made us appreciate a lot of the struggle.
+The idea was simple — create a product detection or segmentation model using the most common Filipino grocery items, with as many of them as possible. We did this as a class for the UPD MEngAI AI 231 course, Machine Learning Operations (here's a helpful link to Dr. Rowel Atienza's [GitHub repository for the Deep Learning course](https://github.com/roatienza/Deep-Learning-Experiments)). Obviously, the first step was building a database of images, and doing manual annotation. It wasn't the easiest experience, but it definitely made us appreciate a lot of the struggle.
 
 Having a model that could do this was a simple proof of concept — we didn't have to go too far and fine-tune Optical Character Recognition (OCR) and Open-Vocabulary Object Detection (OVOD) models. I decided to do supervised training with the Ultralytics YOLO - v11 series. At this time, the Segment Anything Models were already released, but YOLO models were simply smaller, faster, and more computationally efficient. See the table below for a [quick comparison from the Ultralytics website](https://docs.ultralytics.com/models/sam/#sam-comparison-vs-yolo).
 
