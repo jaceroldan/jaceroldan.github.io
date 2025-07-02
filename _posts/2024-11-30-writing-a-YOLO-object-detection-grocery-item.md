@@ -63,27 +63,32 @@ There was no known dataset yet on Filipino grocery products so our class had to 
 ![Number-of-Instances-vs-Classes](/assets/yolo-classes-instances.png)
 
 
-I had to be very familiar with the VGG Image Annotator (VIA) software. It was a little clunky at first, and it was difficult to set the annotation formats at first. With our group
+I had to be very familiar with the VGG Image Annotator (VIA) software. It was a little clunky at first, and it was difficult to set the annotation formats at first. One of our team members deployed a VIA server and had the whole flow centralized. If you're interested in seeing the images, making a public benchmark dataset is still being talked about.
 
 ![VIA-Software](/assets/yolo-via-image-annotator.png)
 
+My strategy started off by varying the version and model sizes of the YOLO models I utilized. After some search, I started to compare YOLO8 and YOLO11. YOLO8 is still much sought after, especially in quality control, defect detection, real-time management, and retail inventory management, much due to its stability and mature ecosystem. Slowly though, YOLO11 (which was released recently at this point of writing) has been seen to slowly take over, in terms of speed, computational efficiency, and accuracy. See the chart below for a comparison of the two model families.
+
+![YOLO-Examples](/assets/yolo-comparison.png)
+
 ## Part 2
-* Used last model parameters and hyperparameters. 
-(mosaic=0.5, hsv_h=0.015, hsv_s=0.7, hsv_v=0.4, degrees=0.373, translate=0.45, scale=0.5, shear=0.3, flipud=0.01, fliplr=0.5)
-* Trained for 50 more epochs (previously trained for only 50). 
-* Varied HSV (Hue, Saturation, and Brightness) parameters
+
 
 ## Results
 
 ### Explanation of the different metrics
 
-| Metric    | Value  | Description                                                      |
-|-----------|--------|------------------------------------------------------------------|
-| GPU_mem   | 36.1GB | Estimate of memory utilization during training.                  |
-| box_loss  | 0.5556 | How well the bounding boxes fit the objects                      |
-| cls_loss  | 1.05   | How well the segmentation masks match the objects                |
-| dfl_loss  | 0.9353 | Distribution focal loss, used for better bounding box regression |
-| Instances | 3      | Instances seen per image on average                              |
+| Metric    | Values on Best Run | Description                                                      |
+|-----------|--------------------|------------------------------------------------------------------|
+| GPU_mem   | 36.1GB             | Estimate of memory utilization during training.                  |
+| box_loss  | 0.5556             | How well the bounding boxes fit the objects                      |
+| cls_loss  | 1.05               | How well the segmentation masks match the objects                |
+| dfl_loss  | 0.9353             | Distribution focal loss, used for better bounding box regression |
+| Instances | 3                  | Instances seen per image on average                              |
+| P         | 0.907              | Precision                                                        |
+| R         | 0.777              | Recall                                                           |
+| mAP50     | 0.842              | Mean Average Precision at 50% IoU                                |
+| mAP50-95  | 0.734              | More strict average                                              |
 
 ### Full table of runs
 
@@ -108,7 +113,7 @@ I had to be very familiar with the VGG Image Annotator (VIA) software. It was a 
 | 17   | 0.845 | 0.775 | 0.817 | Trial 14 with HSV_h 0.45                                                                                                           |
 | 18   | 0.877 | 0.766 | 0.832 | Trial 14 with HSV_s 0.6                                                                                                            |
 | 19   | 0.874 | 0.798 | 0.845 | Trial 14 with HSV_s 0.5                                                                                                            |
-| 20   | 0.907 | 0.777 | 0.842 | Trial 14 with HSV_s 0.4                                                                                                            |
+| 20   | 0.907 | 0.777 | 0.842 | Trial 14 with HSV_s 0. 4 (Best Run!)                                                                                                        |
 | 21   | 0.865 | 0.779 | 0.833 | Trial 14 with HSV_v 0.5                                                                                                            |
 | 22   | 0.846 | 0.785 | 0.839 | Trial 14 with HSV_v 0.6                                                                                                            |
 | 23   | 0.859 | 0.785 | 0.974 | Trial 14 with HSV_v 0.7                                                                                                            |
