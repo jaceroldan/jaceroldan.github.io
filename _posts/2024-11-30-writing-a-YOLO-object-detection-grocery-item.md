@@ -65,6 +65,7 @@ There was no known dataset yet on Filipino grocery products so our class had to 
 
 I had to be very familiar with the VGG Image Annotator (VIA) software. It was a little clunky at first, and it was difficult to set the annotation formats at first. With our group
 
+![VIA-Software](/assets/yolo-via-image-annotator.png)
 
 ## Part 2
 * Used last model parameters and hyperparameters. 
@@ -72,7 +73,19 @@ I had to be very familiar with the VGG Image Annotator (VIA) software. It was a 
 * Trained for 50 more epochs (previously trained for only 50). 
 * Varied HSV (Hue, Saturation, and Brightness) parameters
 
-## Full results from all sets of runs
+## Results
+
+### Explanation of the different metrics
+
+| Metric    | Value  | Description                                                      |
+|-----------|--------|------------------------------------------------------------------|
+| GPU_mem   | 36.1GB | Estimate of memory utilization during training.                  |
+| box_loss  | 0.5556 | How well the bounding boxes fit the objects                      |
+| cls_loss  | 1.05   | How well the segmentation masks match the objects                |
+| dfl_loss  | 0.9353 | Distribution focal loss, used for better bounding box regression |
+| Instances | 3      | Instances seen per image on average                              |
+
+### Full table of runs
 
 | Run | BoxP  | R     | mAP   | Remarks                                                                                                                             |
 |-----|-------|-------|-------|-------------------------------------------------------------------------------------------------------------------------------------|
