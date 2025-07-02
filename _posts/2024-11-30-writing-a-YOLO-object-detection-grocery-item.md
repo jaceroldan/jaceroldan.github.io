@@ -5,6 +5,8 @@ categories: ["Deep Learning"]
 tags: [Computer Vision, YOLO]
 ---
 
+![YOLO-Examples](/assets/yolo-assets-examples.png)
+
 # Summary
 
 An experiment to train a model to detect Filipino grocery items using YOLO. YOLO v11 model (X-size) is trained in this experiment for object detection and segmentation tasks for common Filipino grocery items under a variety of model configurations and data augmentation techniques. An inference application is deployed via tunneling on a Gradio interface.
@@ -103,9 +105,15 @@ The best YOLO configuration did pretty well on the dataset, but really struggled
 
 ## Part 2
 
-After our first foray, the class was given 2 more weeks to improve the dataset. We added more images, brought up the total number of images per object class to about 500 per grocery item, and double checked our initializations (e.g. ensured the images were of the same sizes, the annotation boxes were correct and in the proper formats, etc.).
+After our first foray, the class was given 2 more weeks to improve the dataset. We added more images, brought up the total number of images per object class to about 500 per grocery item, and double checked our initializations (e.g. ensured the images were of the same sizes, the annotation boxes were correct and in the proper formats, etc.). As you can see here the each class has close to 500 instances each across all images (and a few even went beyond to produce close to 1500!). As this was a coordinated effort, some things were a little out of control individually, but I still think it's a pretty good start, and it's nothing a bit of curation can't help with.
 
 ![Number-of-Instances-vs-Classes](/assets/yolo-classes-instances-2.png)
+
+In this phase, I started varying the number of epochs and hyperparameters individually at each experiment. I also introduced some Mixup variations on the dataset during training on Runs 10 and 11. Mixup is a data augmentation technique wherein the training would randomly select pairs of images and linearly interpolate their pixels. You can read more about Mixup from this [paper](https://arxiv.org/pdf/1710.09412v2).
+
+I also varied the HSV_v, HSV_s, HSV_h values at the end of this, combining both the increase of epochs (**from 30 to 50**) and the mixup-affected images. The best model so far was one with the lowest HSV_s in my configuration settings **(0.4)** *with HSV_h and HSV_v kept the same as default (see Part 1)*. 
+
+The tuning would have been better if we had been able to run grid search or Optuna-like mechanisms, or even [Ultralytics very own model tuning](https://docs.ultralytics.com/guides/hyperparameter-tuning/#custom-search-space-example), this would have been a more correct way to do this. Of course, we were limited by our time-sharing on the A100 NVIDIA units we were assigned to, so I will leave this for future work.
 
 ## Results
 
@@ -146,17 +154,32 @@ After our first foray, the class was given 2 more weeks to improve the dataset. 
 | 17   | 0.845 | 0.775 | 0.817 | Trial 14 with HSV_h 0.45                                                                                                           |
 | 18   | 0.877 | 0.766 | 0.832 | Trial 14 with HSV_s 0.6                                                                                                            |
 | 19   | 0.874 | 0.798 | 0.845 | Trial 14 with HSV_s 0.5                                                                                                            |
-| 20   | 0.907 | 0.777 | 0.842 | Trial 14 with HSV_s 0. 4 (Best Run!)                                                                                                        |
+| 20   | 0.907 | 0.777 | 0.842 | Trial 14 with HSV_s 0.4 (Best Run!)                                                                                                        |
 | 21   | 0.865 | 0.779 | 0.833 | Trial 14 with HSV_v 0.5                                                                                                            |
 | 22   | 0.846 | 0.785 | 0.839 | Trial 14 with HSV_v 0.6                                                                                                            |
 | 23   | 0.859 | 0.785 | 0.974 | Trial 14 with HSV_v 0.7                                                                                                            |
 
 # Training runs
 
-Training runs and weights can be found in this [Google Drive](https://drive.google.com/drive/folders/1_awr49-evoKf2umHpMZX-DZkjJaTCUfU?usp=sharing). It's available on a request for access basis 
+Training runs and weights can be found in this [Google Drive](https://drive.google.com/drive/folders/1_awr49-evoKf2umHpMZX-DZkjJaTCUfU?usp=sharing). It's available on a request for access basis.
 
 # Sample inference
 
-![YOLO-Examples](/assets/yolo-assets-examples.png)
+## Batch 1: Labelled vs Predicted
+
+![Batch 1: Labels](/assets/YOLO_val_batch0_labels.jpg)
+![Batch 1: Predictions](/assets/YOLO_val_batch0_pred.jpg)
+
+## Batch 2: Labelled vs Predicted
+
+![Batch 2: Labels](/assets/YOLO_val_batch1_labels.jpg)
+![Batch 2: Predictions](/assets/YOLO_val_batch1_pred.jpg)
+
+## Batch 3: Labelled vs Predicted
+
+![Batch 3: Labels](/assets/YOLO_val_batch2_labels.jpg)
+![Batch 3: Predictions](/assets/YOLO_val_batch2_pred.jpg)
+
+# Sample Video
 
 For a sample video, you may look at this [Google Drive link](https://drive.google.com/file/d/11ZkKFuzX7ROK4D8aibv1qCen53INYlT0/view?usp=sharing).
