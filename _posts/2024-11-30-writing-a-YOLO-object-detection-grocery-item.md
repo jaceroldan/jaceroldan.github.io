@@ -31,34 +31,36 @@ The idea was to find a model that was robust enough to detect even at varying co
 
 This was composed of Run 1 to 14 configurations. Our class had 2 weeks to come up with initial solutions, aside from doing the data collection, preprocessing, and annotation. Each had to present an individual solution and deliberate the pros and cons of the solution. We also had to present a demo and share our findings with the entire class.
 
-There was no known dataset yet on Filipino grocery products so our class had to split the data collection duties. I had focused on collecting pictures of UFC Banana Ketchup. Take a look at the items the other people had to collect in the table below.
+There was no known dataset yet on Filipino grocery products so our class had to split the data collection duties. I had focused on collecting pictures of UFC Banana Ketchup. The full dataset contained about 500 images per object class. Take a look at the items the other people had to collect in the table below.
 
-| Common Grocery Item      | Specific Details                                     | Number of Images | Number of Objects |
-|--------------------------|------------------------------------------------------|------------------|-------------------|
-| Bottled Soda             | Coke Zero                                            | 350              | 49,401            |
-| Canned Sardines          | 555 Sardines                                         | 350              | 49,401            |
-| Canned Tuna              | Century Tuna (short and tall cans, white label)      | 350              | 49,401            |
-| Cheese                   | Eden Cheese (box and sachet)                         | 350              | 49,401            |
-| Chocolate                | KitKat                                               | 350              | 49,401            |
-| Coffee                   | Nescafé 3-in-1 Original (single & twin pack)         | 350              | 49,401            |
-| Condensed Milk           | Alaska Classic (377 g can)                           | 350              | 49,401            |
-| Cooking Oil              | Simply Pure Canola Oil                               | 350              | 49,401            |
-| Corned Beef              | Purefoods Corned Beef                                | 350              | 49,401            |
-| Crackers                 | Rebisco Crackers (transparent packaging)             | 350              | 49,401            |
-| Ethyl Alcohol            | Green Cross                                          | 350              | 49,401            |
-| Garlic                   | Whole bulb of garlic                                 | 350              | 49,401            |
-| Instant Noodles          | Lucky Me Pancit Canton                               | 350              | 49,401            |
-| Ketchup                  | UFC Banana Ketchup                                   | 350              | 49,401            |
-| Lemon                    | Whole lemon                                          | 350              | 49,401            |
-| Mayonnaise               | Lady's Choice Real Mayonnaise (220 ml jar)           | 350              | 49,401            |
-| Nestlé All-Purpose Cream | Nestlé – 250 ml                                      | 350              | 49,401            |
-| Pasta                    | Spaghetti or macaroni                                | 350              | 49,401            |
-| Peanut Butter            | Skippy                                               | 350              | 49,401            |
-| Pineapple Juice          | Del Monte Green (Fiber and ACE variants)             | 350              | 49,401            |
-| Shampoo                  | Pink Sunsilk                                         | 350              | 49,401            |
-| Soap                     | Dove Relaxing Lavender                               | 350              | 49,401            |
-| Soy Sauce                | Silver Swan Soy Sauce (385 ml)                       | 350              | 49,401            |
-| Toothpaste               | Colgate Advanced White Value Pack (2 tubes)          | 350              | 49,401            |
+| Common Grocery Item      | Specific Details                                     |
+|--------------------------|------------------------------------------------------|
+| Bottled Soda             | Coke Zero                                            |
+| Canned Sardines          | 555 Sardines                                         |
+| Canned Tuna              | Century Tuna (short and tall cans, white label)      |
+| Cheese                   | Eden Cheese (box and sachet)                         |
+| Chocolate                | KitKat                                               |
+| Coffee                   | Nescafé 3-in-1 Original (single & twin pack)         |
+| Condensed Milk           | Alaska Classic (377 g can)                           |
+| Cooking Oil              | Simply Pure Canola Oil                               |
+| Corned Beef              | Purefoods Corned Beef                                |
+| Crackers                 | Rebisco Crackers (transparent packaging)             |
+| Ethyl Alcohol            | Green Cross                                          |
+| Garlic                   | Whole bulb of garlic                                 |
+| Instant Noodles          | Lucky Me Pancit Canton                               |
+| Ketchup                  | UFC Banana Ketchup                                   |
+| Lemon                    | Whole lemon                                          |
+| Mayonnaise               | Lady's Choice Real Mayonnaise (220 ml jar)           |
+| Nestlé All-Purpose Cream | Nestlé – 250 ml                                      |
+| Pasta                    | Spaghetti or macaroni                                |
+| Peanut Butter            | Skippy                                               |
+| Pineapple Juice          | Del Monte Green (Fiber and ACE variants)             |
+| Shampoo                  | Pink Sunsilk                                         |
+| Soap                     | Dove Relaxing Lavender                               |
+| Soy Sauce                | Silver Swan Soy Sauce (385 ml)                       |
+| Toothpaste               | Colgate Advanced White Value Pack (2 tubes)          |
+
+![Number-of-Instances-vs-Classes](/assets/yolo-classes-instances.png)
 
 
 I had to be very familiar with the VGG Image Annotator (VIA) software. It was a little clunky at first, and it was difficult to set the annotation formats at first. With our group
