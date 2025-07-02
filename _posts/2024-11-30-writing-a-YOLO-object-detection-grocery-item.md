@@ -1,6 +1,8 @@
 ---
 layout: post
 title:  "A YOLO Segmentation Model for Grocery Items!"
+categories: ["Deep Learning"]
+tags: [Computer Vision, YOLO]
 ---
 
 # A YOLO Segmentation Model for Grocery Items!
