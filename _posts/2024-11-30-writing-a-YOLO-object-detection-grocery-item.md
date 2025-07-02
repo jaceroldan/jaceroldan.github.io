@@ -9,13 +9,68 @@ An experiment to train a model to detect Filipino grocery items using YOLO. YOLO
 
 # Prompt
 
-We were given a task during our AI 212 course to 
+The idea was simple — create a product detection or segmentation model using the most common Filipino grocery items, with as many of them as possible. We did this as a class for the UPD MEngAI AI 231 course, Machine Learning Operations. Obviously, the first step was building a database of images, and collecting lead to (manual) annotation. It wasn't the easiest experience, but it definitely made us appreciate a lot of the struggle.
+
+Having a model that could do this was a simple proof of concept — we didn't have to go too far and fine-tune Optical Character Recognition (OCR) and Open-Vocabulary Object Detection (OVOD) models. I decided to do supervised training with the Ultralytics YOLO - v11 series. At this time, the Segment Anything Models were already released, but YOLO models were simply smaller, faster, and more computationally efficient. See the table below for a [quick comparison from the Ultralytics website](https://docs.ultralytics.com/models/sam/#sam-comparison-vs-yolo).
+
+| Model                          | Size (Mb)           | Parameters (M)  | Speed (CPU) (ms/im)   |
+|--------------------------------|---------------------|-----------------|-----------------------|
+| Meta SAM-b                     | 375                 | 93.7            | 49401                 |
+| MobileSAM                      | 40.7                | 10.1            | 25381                 |
+| FastSAM-s with YOLOv8 backbone | 23.7                | 11.8            | 55.9                  |
+| Ultralytics YOLOv8n-seg        | 6.7 (11.7x smaller) | 3.4 (11.4 less) | 24.5 (1061x faster)   |
+| Ultralytics YOLO11n-seg        | 5.9 (13.2x smaller) | 2.9 (13.4 less) | 30.1 (864x faster)    |
+
+The idea was to find a model that was robust enough to detect even at varying conditions. It was easier said than done.
 
 # Methodology and Rationale of Proposed Solution
 
 ## Part 1
 
-This was composed of Run 1 to 14 configurations.
+This was composed of Run 1 to 14 configurations. Our class had 2 weeks to come up with initial solutions, aside from doing the data collection, preprocessing, and annotation. Each had to present an individual solution and deliberate the pros and cons of the solution. We also had to present a demo and share our findings with the entire class.
+
+There was no known dataset yet on Filipino grocery products so our class had to split the data collection duties. I had focused on collecting pictures of UFC Banana Ketchup. Take a look at the items the other people had to collect in the table below.
+
+| Model                          | Size (Mb)           | Parameters (M)  | Speed (CPU) (ms/im)   |
+|--------------------------------|---------------------|-----------------|-----------------------|
+| Meta SAM-b                     | 375                 | 93.7            | 49401                 |
+| MobileSAM                      | 40.7                | 10.1            | 25381                 |
+| FastSAM-s with YOLOv8 backbone | 23.7                | 11.8            | 55.9                  |
+| Ultralytics YOLOv8n-seg        | 6.7 (11.7x smaller) | 3.4 (11.4 less) | 24.5 (1061x faster)   |
+| Ultralytics YOLO11n-seg        | 5.9 (13.2x smaller) | 2.9 (13.4 less) | 30.1 (864x faster)    |
+
+<!-- Show the table of grocery items here -->
+| Common Grocery Item      | Specific Details                             | Number of Images | Number of Objects   |
+|--------------------------|----------------------------------------------|------------------|-----------------------|
+| Bottled Soda             | Coke Zero                                    | 350              | 49401 |
+| Cheese                   | Eden Cheese (box and sachet)                 | 350              | 49401 |
+| Chocolate                | Kitkat                                       | 350              | 49401 |
+| Coffee                   | Nescafe 3-in-1 original (single & twin pack) | 350              | 49401 |
+| Condensed Milk           | Alaska Classic (377 g can)                   | 350              | 49401 |
+| Cooking Oil              | Simply Pure Canola Oil                       | 350              | 49401 |
+| Corned Beef              | Purefoods Corned Beef                        | 350              | 49401 |
+| Garlic                   | Whole Bulb of Garlic                         | 350              | 49401 |
+| Instant Noodles          | Lucky Me Pancit Canton                       | 350              | 49401 |
+| Ketchup                  | UFC Banana Ketchup                           | 350              | 49401 |
+| Lemon                    |                                              | 350              | 49401 |
+| Nestle All Purpose Cream | Nestle -250 ml                               | 350              | 49401 |
+| Mayonnaise               | Lady's Choice Real Mayonnaise 220 ml jar     | 350              | 49401 |
+| Peanut butter            | Skippy                                       | 350              | 49401 |
+| Pasta                    | spaghetti or macaroni                        | 350              | 49401 |
+| Pineapple Juice          | del monte green (fiber and ace)              | 350              | 49401 |
+| Crackers                 | Rebisco Crackers (transparent packaging)     | 350              | 49401 |
+| Canned Sardines          | 555 Sardines                                 | 350              | 49401 |
+| Shampoo                  | Pink Sunsilk                                 | 350              | 49401 |
+| Soap                     | Dove relaxing lavander                       | 350              | 49401 |
+| Soy Sauce                | Silver Swan Soy Sauce - 385 mL               | 350              | 49401 |
+| Toothpaste               | Colgate Advanced White Value Pack (2 Tubes)  | 350              | 49401 |
+| Canned Tuna              | Century Tuna (short and tall, white color)   | 350              | 49401 |
+| Ethyl Alcohol            | GreenCross.                                  | 350              | 49401 |
+
+
+I had to be very familiar with the VGG Image Annotator (VIA) software. It was a little clunky at first, and it was difficult to set the annotation formats at first. With our group
+
+
 
 ## Part 2
 * Used last model parameters and hyperparameters. 
@@ -23,7 +78,7 @@ This was composed of Run 1 to 14 configurations.
 * Trained for 50 more epochs (previously trained for only 50). 
 * Varied HSV (Hue, Saturation, and Brightness) parameters
 
-
+## Full results from all sets of runs
 
 | Run | BoxP  | R     | mAP   | Remarks                                                                                                                             |
 |-----|-------|-------|-------|-------------------------------------------------------------------------------------------------------------------------------------|
@@ -40,7 +95,7 @@ This was composed of Run 1 to 14 configurations.
 | 11   | 0.969 | 0.977 | 0.974 | Run9 with Mixup variation on 50 epochs                                                                                             |
 | 12   | 0.883 | 0.773 | 0.844 | Made a dataset improvement and reran using Trial 11 settings on 30 epochs                                                          |
 | 13   | 0.870 | 0.763 | 0.828 | Trial 12 but on 50 epochs                                                                                                          |
-| 14   | 0.898 | 0.785 | 0.842 | Made further dataset improvments and reran using Trial 11 on 30 epochs                                                             |
+| 14   | 0.898 | 0.785 | 0.842 | Made further dataset improvements and reran using Trial 11 on 30 epochs                                                             |
 | 15   | 0.850 | 0.775 | 0.830 | Trial 14 with HSV_h 0.25                                                                                                           |
 | 16   | 0.879 | 0.757 | 0.820 | Trial 14 with HSV_h 0.35                                                                                                           |
 | 17   | 0.845 | 0.775 | 0.817 | Trial 14 with HSV_h 0.45                                                                                                           |
@@ -53,7 +108,7 @@ This was composed of Run 1 to 14 configurations.
 
 # Training runs
 
-Training runs and weights can be found in this [Google Drive](https://drive.google.com/drive/folders/1_awr49-evoKf2umHpMZX-DZkjJaTCUfU?usp=sharing) (Request for access from owner). 
+Training runs and weights can be found in this [Google Drive](https://drive.google.com/drive/folders/1_awr49-evoKf2umHpMZX-DZkjJaTCUfU?usp=sharing). It's available on a request for access basis 
 
 # Sample inference
 
