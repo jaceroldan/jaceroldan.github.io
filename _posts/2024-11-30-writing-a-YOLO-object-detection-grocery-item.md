@@ -67,9 +67,39 @@ I had to be very familiar with the VGG Image Annotator (VIA) software. It was a 
 
 ![VIA-Software](/assets/yolo-via-image-annotator.png)
 
-My strategy started off by varying the version and model sizes of the YOLO models I utilized. After some search, I started to compare YOLO8 and YOLO11. YOLO8 is still much sought after, especially in quality control, defect detection, real-time management, and retail inventory management, much due to its stability and mature ecosystem. Slowly though, YOLO11 (which was released recently at this point of writing) has been seen to slowly take over, in terms of speed, computational efficiency, and accuracy. See the chart below for a comparison of the two model families.
+My strategy started off by varying the version and model sizes of the YOLO models I utilized. After some search, I started to compare YOLO8 and YOLO11. YOLO8 is still much sought after, especially in quality control, defect detection, real-time management, and retail inventory management, much due to its stability and mature ecosystem. Slowly though, YOLO11 (which was released recently at this point of writing) has been seen to slowly take over, in terms of speed, computational efficiency, and accuracy. See the chart below for a comparison of the two model versions. See the full technical comparison here: https://docs.ultralytics.com/compare/yolov8-vs-yolo11/#ultralytics-yolo11.
 
-![YOLO-Examples](/assets/yolo-comparison.png)
+![YOLO-Examples](/assets/YOLO-comparison.png)
+
+Both model versions also had similar sets of sizes. I tested both the largest (x) and smallest sizes (s) for both YOLO8 and YOLO11, bearing in mind that we had limited resources. Note: We made use of UP's newest [A100 clusters](https://www.nvidia.com/en-us/data-center/a100/), which offers limited use to the AI department even at this time.
+
+* Nano: yolo8n and yolo11n
+* Small: yolo8s and yolo11s
+* Medium: yolo8m and yolo11m
+* Large: yolo8l and yolo11l
+* Extra Large: yolo8x and yolo11x
+
+I also used the initial default YOLO hyperparameters in the first phase before our first deliverable.
+
+| Parameter | Type  | Value Range | Default | Description |
+|-----------|-------|-------------|---------|-------------|
+| mosaic    | float | (0.0, 1.0)   | 0.5     | Probability of using mosaic augmentation, which combines 4 images. Especially useful for small object detection |
+| hsv_v     | float | (0.0, 0.9)   | 0.4     | Random value (brightness) augmentation range. Helps model handle different exposure levels |
+| hsv_s     | float | (0.0, 0.9)   | 0.7     | Random saturation augmentation range in HSV space. Simulates different lighting conditions |
+| hsv_h     | float | (0.0, 0.1)   | 0.015   | Random hue augmentation range in HSV color space. Helps model generalize across color variations |
+| degrees   | float | (0.0, 45.0)  | 0.373   | Maximum rotation augmentation in degrees. Helps model become invariant to object orientation |
+| translate | float | (0.0, 0.9)   | 0.45    | Maximum translation augmentation as fraction of image size. Improves robustness to object position |
+| scale     | float | (0.0, 0.9)   | 0.5     | Random scaling augmentation range. Helps model detect objects at different sizes |
+| shear     | float | (0.0, 10.0)  | 0.3     | Maximum shear augmentation in degrees. Adds perspective-like distortions to training images |
+| flipud    | float | (0.0, 1.0)   | 0.01    | Probability of vertical image flip during training. Useful for overhead/aerial imagery |
+| fliplr    | float | (0.0, 1.0)   | 0.5     | Probability of horizontal image flip. Helps model become invariant to object direction |
+
+Truth be told, I could have varied more on the hyperparameters but will leave this to future work. The full list of tunable hyperparameters can be found on the [Ultralytics website](https://docs.ultralytics.com/guides/hyperparameter-tuning/#default-search-space-description).
+
+The best YOLO configuration did pretty well on the dataset, but really struggled in cases of poor lighting and partial occlusions. I think the issue lies in the fact that our validation dataset required more diversity in terms of occlusions, lighting, and other visual factors. This was probably more a reflection in the data collection and annotation rather than YOLO's ability to generalize.
+
+![YOLO-Examples](/assets/YOLO-part-1-best.png)
+
 
 ## Part 2
 
