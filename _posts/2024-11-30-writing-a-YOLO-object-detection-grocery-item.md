@@ -11,7 +11,7 @@ An experiment to train a model to detect Filipino grocery items using YOLO. YOLO
 
 # Prompt
 
-The idea was simple — create a product detection or segmentation model using the most common Filipino grocery items, with as many of them as possible. We did this as a class for the UPD MEngAI AI 231 course, Machine Learning Operations. Obviously, the first step was building a database of images, and collecting lead to (manual) annotation. It wasn't the easiest experience, but it definitely made us appreciate a lot of the struggle.
+The idea was simple — create a product detection or segmentation model using the most common Filipino grocery items, with as many of them as possible. We did this as a class for the UPD MEngAI AI 231 course, Machine Learning Operations. Obviously, the first step was building a database of images, and doing manual annotation. It wasn't the easiest experience, but it definitely made us appreciate a lot of the struggle.
 
 Having a model that could do this was a simple proof of concept — we didn't have to go too far and fine-tune Optical Character Recognition (OCR) and Open-Vocabulary Object Detection (OVOD) models. I decided to do supervised training with the Ultralytics YOLO - v11 series. At this time, the Segment Anything Models were already released, but YOLO models were simply smaller, faster, and more computationally efficient. See the table below for a [quick comparison from the Ultralytics website](https://docs.ultralytics.com/models/sam/#sam-comparison-vs-yolo).
 
@@ -33,45 +33,35 @@ This was composed of Run 1 to 14 configurations. Our class had 2 weeks to come u
 
 There was no known dataset yet on Filipino grocery products so our class had to split the data collection duties. I had focused on collecting pictures of UFC Banana Ketchup. Take a look at the items the other people had to collect in the table below.
 
-| Model                          | Size (Mb)           | Parameters (M)  | Speed (CPU) (ms/im)   |
-|--------------------------------|---------------------|-----------------|-----------------------|
-| Meta SAM-b                     | 375                 | 93.7            | 49401                 |
-| MobileSAM                      | 40.7                | 10.1            | 25381                 |
-| FastSAM-s with YOLOv8 backbone | 23.7                | 11.8            | 55.9                  |
-| Ultralytics YOLOv8n-seg        | 6.7 (11.7x smaller) | 3.4 (11.4 less) | 24.5 (1061x faster)   |
-| Ultralytics YOLO11n-seg        | 5.9 (13.2x smaller) | 2.9 (13.4 less) | 30.1 (864x faster)    |
-
-<!-- Show the table of grocery items here -->
-| Common Grocery Item      | Specific Details                             | Number of Images | Number of Objects   |
-|--------------------------|----------------------------------------------|------------------|-----------------------|
-| Bottled Soda             | Coke Zero                                    | 350              | 49401 |
-| Cheese                   | Eden Cheese (box and sachet)                 | 350              | 49401 |
-| Chocolate                | Kitkat                                       | 350              | 49401 |
-| Coffee                   | Nescafe 3-in-1 original (single & twin pack) | 350              | 49401 |
-| Condensed Milk           | Alaska Classic (377 g can)                   | 350              | 49401 |
-| Cooking Oil              | Simply Pure Canola Oil                       | 350              | 49401 |
-| Corned Beef              | Purefoods Corned Beef                        | 350              | 49401 |
-| Garlic                   | Whole Bulb of Garlic                         | 350              | 49401 |
-| Instant Noodles          | Lucky Me Pancit Canton                       | 350              | 49401 |
-| Ketchup                  | UFC Banana Ketchup                           | 350              | 49401 |
-| Lemon                    |                                              | 350              | 49401 |
-| Nestle All Purpose Cream | Nestle -250 ml                               | 350              | 49401 |
-| Mayonnaise               | Lady's Choice Real Mayonnaise 220 ml jar     | 350              | 49401 |
-| Peanut butter            | Skippy                                       | 350              | 49401 |
-| Pasta                    | spaghetti or macaroni                        | 350              | 49401 |
-| Pineapple Juice          | del monte green (fiber and ace)              | 350              | 49401 |
-| Crackers                 | Rebisco Crackers (transparent packaging)     | 350              | 49401 |
-| Canned Sardines          | 555 Sardines                                 | 350              | 49401 |
-| Shampoo                  | Pink Sunsilk                                 | 350              | 49401 |
-| Soap                     | Dove relaxing lavander                       | 350              | 49401 |
-| Soy Sauce                | Silver Swan Soy Sauce - 385 mL               | 350              | 49401 |
-| Toothpaste               | Colgate Advanced White Value Pack (2 Tubes)  | 350              | 49401 |
-| Canned Tuna              | Century Tuna (short and tall, white color)   | 350              | 49401 |
-| Ethyl Alcohol            | GreenCross.                                  | 350              | 49401 |
+| Common Grocery Item      | Specific Details                                     | Number of Images | Number of Objects |
+|--------------------------|------------------------------------------------------|------------------|-------------------|
+| Bottled Soda             | Coke Zero                                            | 350              | 49,401            |
+| Canned Sardines          | 555 Sardines                                         | 350              | 49,401            |
+| Canned Tuna              | Century Tuna (short and tall cans, white label)      | 350              | 49,401            |
+| Cheese                   | Eden Cheese (box and sachet)                         | 350              | 49,401            |
+| Chocolate                | KitKat                                               | 350              | 49,401            |
+| Coffee                   | Nescafé 3-in-1 Original (single & twin pack)         | 350              | 49,401            |
+| Condensed Milk           | Alaska Classic (377 g can)                           | 350              | 49,401            |
+| Cooking Oil              | Simply Pure Canola Oil                               | 350              | 49,401            |
+| Corned Beef              | Purefoods Corned Beef                                | 350              | 49,401            |
+| Crackers                 | Rebisco Crackers (transparent packaging)             | 350              | 49,401            |
+| Ethyl Alcohol            | Green Cross                                          | 350              | 49,401            |
+| Garlic                   | Whole bulb of garlic                                 | 350              | 49,401            |
+| Instant Noodles          | Lucky Me Pancit Canton                               | 350              | 49,401            |
+| Ketchup                  | UFC Banana Ketchup                                   | 350              | 49,401            |
+| Lemon                    | Whole lemon                                          | 350              | 49,401            |
+| Mayonnaise               | Lady's Choice Real Mayonnaise (220 ml jar)           | 350              | 49,401            |
+| Nestlé All-Purpose Cream | Nestlé – 250 ml                                      | 350              | 49,401            |
+| Pasta                    | Spaghetti or macaroni                                | 350              | 49,401            |
+| Peanut Butter            | Skippy                                               | 350              | 49,401            |
+| Pineapple Juice          | Del Monte Green (Fiber and ACE variants)             | 350              | 49,401            |
+| Shampoo                  | Pink Sunsilk                                         | 350              | 49,401            |
+| Soap                     | Dove Relaxing Lavender                               | 350              | 49,401            |
+| Soy Sauce                | Silver Swan Soy Sauce (385 ml)                       | 350              | 49,401            |
+| Toothpaste               | Colgate Advanced White Value Pack (2 tubes)          | 350              | 49,401            |
 
 
 I had to be very familiar with the VGG Image Annotator (VIA) software. It was a little clunky at first, and it was difficult to set the annotation formats at first. With our group
-
 
 
 ## Part 2
