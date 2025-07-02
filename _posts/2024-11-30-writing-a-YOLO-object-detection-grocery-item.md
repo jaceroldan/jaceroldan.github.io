@@ -5,7 +5,7 @@ categories: ["Deep Learning"]
 tags: [Computer Vision, YOLO]
 ---
 
-# A YOLO Segmentation Model for Grocery Items!
+# Summary
 
 An experiment to train a model to detect Filipino grocery items using YOLO. YOLO v11 model (X-size) is trained in this experiment for object detection and segmentation tasks for common Filipino grocery items under a variety of model configurations and data augmentation techniques. An inference application is deployed via tunneling on a Gradio interface.
 
