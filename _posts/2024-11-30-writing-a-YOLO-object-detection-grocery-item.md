@@ -159,6 +159,10 @@ The tuning would have been better if we had been able to run grid search or Optu
 | 22   | 0.846 | 0.785 | 0.839 | Trial 14 with HSV_v 0.6                                                                                                            |
 | 23   | 0.859 | 0.785 | 0.974 | Trial 14 with HSV_v 0.7                                                                                                            |
 
+Here is the final confusion matrix from the best configuration's run.
+
+![Confusion Matrix](/assets/YOLO-confusion-matrix-part2.png)
+
 # Training runs
 
 Training runs and weights can be found in this [Google Drive](https://drive.google.com/drive/folders/1_awr49-evoKf2umHpMZX-DZkjJaTCUfU?usp=sharing). It's available on a request for access basis.
@@ -179,6 +183,8 @@ Training runs and weights can be found in this [Google Drive](https://drive.goog
 
 ![Batch 3: Labels](/assets/YOLO_val_batch2_labels.jpg)
 ![Batch 3: Predictions](/assets/YOLO_val_batch2_pred.jpg)
+
+
 
 # Sample Video
 
