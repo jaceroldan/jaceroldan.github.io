@@ -13,7 +13,7 @@ tags: [Transfer Learning, Machine Translation]
 
 This mini-project focused on CuatroLLM, a 1.3B parameter model pre-trained on four languages: English, French, Spanish, and German. We replicated its baseline results on complex reasoning tasks. Fine-tuning CuatroLLM with a scientific corpus marginally worsens performance in complex reasoning. However, in zero-shot and one-shot scenarios, we demonstrate improvements in fine-tuned CuatroLLM’s English-French translation for the scientific domain. Lastly, we explored CuatroLLM for English-Filipino translation with a small compiled dataset. Including Filipino as part of pre-training could improve this performance, but it would require a larger translation dataset.
 
-This project was done in coordination with Drandreb Earl Juanico and Alister Marc Domilies. Disclaimer: This is work done in coordination with the AI351 course of the MEngAI program of the University of the Philippines Diliman. 
+This project was done in coordination with Drandreb Earl Juanico and Alister Marc Domilies. Note: This is work done in coordination with the AI351 course of the MEngAI program of the University of the Philippines Diliman. 
 
 # Introduction
 
