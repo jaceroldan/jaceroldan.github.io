@@ -91,7 +91,7 @@ If you're building something ambitious in AI or research-driven tech, I’d love
 
 Avid StarCraft 2 player—currently dreaming of building a model that predicts match outcomes accurately!
 
-I also maintain a 1,800-day Duolingo streak across multiple languages, including French, Spanish, Korean, and Swahili (username: https://www.duolingo.com/profile/Jaceeeeee). I'm committed to lifelong learning and cultural fluency!
+I also maintain a 1,800-day Duolingo streak across multiple languages, including French, Spanish, Korean, and Swahili (username: [https://www.duolingo.com/profile/Jaceeeeee](https://www.duolingo.com/profile/Jaceeeeee)). I'm committed to lifelong learning and cultural fluency!
 
 
 

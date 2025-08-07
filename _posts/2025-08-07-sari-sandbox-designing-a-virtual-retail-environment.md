@@ -7,6 +7,6 @@ tags: [Computer Vision, Embodied AI, Simulation Environments]
 
 We published a new paper on the design of a virtual retail store environment for embodied AI!
 
-Link to our website: https://sarisandbox.github.io/.
+Link to our website: [https://sarisandbox.github.io/](https://sarisandbox.github.io/).
 
 ![Sari Sandbox Environment](/assets/sari-banner-min.jpg)
